@@ -15,6 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id') ->constrained() ->onDelete('cascade');
             $table->string('invoice_number')->nullable();
             $table->double('total_amount', 8, 2)->nullable();
             $table->string('status')->default('new');

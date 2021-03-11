@@ -16,7 +16,9 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.4",
-        "silber/bouncer": "v1.0.0-rc.10"
+        "silber/bouncer": "v1.0.0-rc.10",
+        "spatie/laravel-activitylog": "^3.17",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

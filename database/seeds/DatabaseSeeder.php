@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder
 		for ($i = 1; $i <= 50; $i++) {
 			$total_amount = $faker->randomNumber(3);
 			$order = Order::create([
+				'customer_id' => Customer::inRandomOrder()->first()->id,
 				'invoice_number' => 'INV'.$faker->randomNumber(4), 
 				'total_amount' => $total_amount, 
 				'status' => $statuses[array_rand($statuses)],

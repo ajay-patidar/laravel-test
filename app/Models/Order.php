@@ -12,8 +12,15 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'invoice_number', 'total_amount', 'status',
+        'customer_id', 'invoice_number', 'total_amount', 'status',
     ];
+
+    /**
+     * Get the customer of the order.
+     */
+    public function customer(){
+        return $this->belongsTo(Customer::class)->withDefault();
+    }
 
     /**
      * Get the order items for the order.
