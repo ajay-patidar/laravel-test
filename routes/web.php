@@ -29,6 +29,6 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('products/getProducts', 'Products@getProducts')->name('products.getProducts');
 	Route::get('products/{product}/status', 'Products@status')->name('products.status');
 
-	Route::resource('orders', 'Orders');
+	Route::resource('orders', 'Orders')->only(['index','show']);
 	Route::post('orders/getOrders', 'Orders@getOrders')->name('orders.getOrders');
 });

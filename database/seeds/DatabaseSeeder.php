@@ -25,15 +25,31 @@ class DatabaseSeeder extends Seeder
 		    'title' => 'Administrator',
 		]);
 
+		Bouncer::allow($adminRole)->everything();
+
 		$userManagerRole = Bouncer::role()->firstOrCreate([
 		    'name' => 'user-manager',
 		    'title' => 'User Manager',
 		]);
 
+		$userManagerAbility = Bouncer::ability()->firstOrCreate([
+		    'name' => 'user-manager',
+		    'title' => 'User Manager',
+		]);
+
+		Bouncer::allow($userManagerRole)->to($userManagerAbility);
+
 		$shopManagerRole = Bouncer::role()->firstOrCreate([
 		    'name' => 'shop-manager',
 		    'title' => 'Shop Manager',
 		]);
+
+		$shopManagerAbility = Bouncer::ability()->firstOrCreate([
+		    'name' => 'shop-manager',
+		    'title' => 'Shop Manager',
+		]);
+
+		Bouncer::allow($shopManagerRole)->to($shopManagerAbility);
 
 		// Create Default Users
 		$administrator = User::updateOrCreate(['email'=>'administrator@example.com'],['name'=>'Administrator', 'email_verified_at' => now(), 'password'=>Hash::make('password')])->assign($adminRole);

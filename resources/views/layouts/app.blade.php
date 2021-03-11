@@ -52,18 +52,22 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('customers.index') }}">{{ __('Customers') }}</a>
-                            </li>
+                            @can ('user-manager')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('customers.index') }}">{{ __('Customers') }}</a>
+                                </li>
+                            @endcan
+                            @can ('shop-manager')
                              <li class="nav-item">
                                 <a class="nav-link" href="{{ route('products.index') }}">{{ __('Products') }}</a>
                             </li>
                              <li class="nav-item">
                                 <a class="nav-link" href="{{ route('orders.index') }}">{{ __('Orders') }}</a>
                             </li>
+                            @endcan
                             <li class="nav-item">
                                 <a id="navbarDropdown" class="nav-link" href="#">
-                                    {{ Auth::user()->name }}
+                                    <strong>{{ Auth::user()->name }}</strong>
                                 </a>
                             </li>
                             <li class="nav-item">
